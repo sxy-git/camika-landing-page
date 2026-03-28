@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "characters": "Characters",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Discover Amazing Characters",
+    "subtitle": "Explore the world of Camika",
+    "cta": "Explore Now"
+  },
+  "tabs": {
+    "overview": "Overview",
+    "costumes": "Costumes",
+    "abilities": "Abilities",
+    "story": "Story"
+  },
+  "character": {
+    "asher_frost": "Asher Frost",
+    "asher_frost_desc": "The Ice Master",
+    "kyu": "Kyu",
+    "kyu_desc": "The Fire Spirit"
+  },
+  "actions": {
+    "try_free": "Try Free",
+    "learn_more": "Learn More",
+    "close": "Close"
+  },
+  "footer": {
+    "copyright": "© 2026 Camika. All rights reserved."
+  }
+}

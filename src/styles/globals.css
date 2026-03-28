@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  /* Figma 颜色 */
+  --color-yellow: #fee61d;
+  --color-black: #030202;
+  --color-red: #d33;
+  --color-char-bg-gold: #674b09;
+  --color-char-bg-red: #4a1b11;
+  --color-nav-shadow: rgba(68, 27, 28, 1);
+
+  /* 现有颜色 */
+  --color-card-dark: #222222;
+  --color-text-main: #ffffff;
+  --color-text-dim: rgba(255, 255, 255, 0.6);
+  --color-primary: #ff0000;
+  --color-primary-dark: #cc0000;
+  --color-accent: #ffff00;
+  --color-accent-dark: #cccc00;
+  --color-background: #000000;
+  --color-surface: #111111;
+  --color-text: #ffffff;
+  --color-text-muted: #999999;
+}
+
+html {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+}
+
+@keyframes ripple-expand {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.camika-frame {
+  transform-origin: top center;
+}

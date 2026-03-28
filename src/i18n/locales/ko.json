@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "홈",
+    "about": "소개",
+    "characters": "캐릭터",
+    "contact": "문의"
+  },
+  "hero": {
+    "title": "놀라운 캐릭터 발견하기",
+    "subtitle": "Camika의 세계를 탐험하세요",
+    "cta": "지금 탐험하기"
+  },
+  "tabs": {
+    "overview": "개요",
+    "costumes": "코스프레",
+    "abilities": "능력",
+    "story": "스토리"
+  },
+  "character": {
+    "asher_frost": "아셔 프로스트",
+    "asher_frost_desc": "얼음의 마법사",
+    "kyu": "큐",
+    "kyu_desc": "불의 정령"
+  },
+  "actions": {
+    "try_free": "무료 체험",
+    "learn_more": "자세히 보기",
+    "close": "닫기"
+  },
+  "footer": {
+    "copyright": "© 2026 Camika. 모든 권리 보유."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "首頁",
+    "about": "關於",
+    "characters": "角色",
+    "contact": "聯繫"
+  },
+  "hero": {
+    "title": "發現精彩角色",
+    "subtitle": "探索 Camika 的世界",
+    "cta": "立即探索"
+  },
+  "tabs": {
+    "overview": "概覽",
+    "costumes": "服裝",
+    "abilities": "能力",
+    "story": "故事"
+  },
+  "character": {
+    "asher_frost": "阿舍·弗罗斯特",
+    "asher_frost_desc": "冰系魔法師",
+    "kyu": "九",
+    "kyu_desc": "火焰精靈"
+  },
+  "actions": {
+    "try_free": "免費試用",
+    "learn_more": "了解更多",
+    "close": "關閉"
+  },
+  "footer": {
+    "copyright": "© 2026 Camika. 版權所有。"
+  }
+}

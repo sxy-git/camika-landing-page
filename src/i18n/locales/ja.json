@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "about": "概要",
+    "characters": "キャラクター",
+    "contact": "お問い合わせ"
+  },
+  "hero": {
+    "title": "魅力的なキャラクターを発見",
+    "subtitle": "Camikaの世界を探検しよう",
+    "cta": "今すぐ探索"
+  },
+  "tabs": {
+    "overview": "概要",
+    "costumes": "コスチューム",
+    "abilities": "能力",
+    "story": "ストーリー"
+  },
+  "character": {
+    "asher_frost": "アッシュ・フロスト",
+    "asher_frost_desc": "氷の魔術師",
+    "kyu": "キュウ",
+    "kyu_desc": "火の精霊"
+  },
+  "actions": {
+    "try_free": "無料で試す",
+    "learn_more": "詳細を見る",
+    "close": "閉じる"
+  },
+  "footer": {
+    "copyright": "© 2026 Camika. 全著作権所有。"
+  }
+}
