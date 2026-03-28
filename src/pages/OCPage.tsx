@@ -1,22 +1,14 @@
 import { useState, useCallback } from "react";
-import { TopNav } from "../components/layout/TopNav";
-import { PageFooter } from "../components/layout/PageFooter";
-import { ActiveBadge } from "../components/ui/ActiveBadge";
-import { PreviewPanel } from "../components/home/PreviewPanel";
-import { CharacterPanel } from "../components/home/CharacterPanel";
-import { CharacterNameOverlay } from "../components/oc/CharacterNameOverlay";
-import { OutfitGrid } from "../components/oc/OutfitGrid";
-import { SceneGrid } from "../components/drawing/SceneGrid";
-import { SceneSelector } from "../components/home/SceneSelector";
-import { PlayButton } from "../components/video/PlayButton";
-import {
-  FIGMA_IMAGES,
-  OC_CHARACTER,
-  DRAWING_SCENES,
-  OUTFITS,
-} from "../data/mockData";
-import type { TabName } from "../data/mockData";
-import type { Character, Scene, Outfit } from "../types/character";
+import { TabNav } from "../components/TabNav/TabNav";
+import { PageFooter } from "../layouts/PageFooter";
+import { ActiveBadge } from "../components/common/ActiveBadge";
+import { OCPanel } from "../components/oc/OCPanel";
+import { DrawingPreview } from "../components/drawing/DrawingPreview";
+import { ComicsPreview } from "../components/Comics/ComicsPreview";
+import { VideoPreview } from "../components/video/VideoPreview";
+import { useTabSwitch } from "../hooks/use-tab-switch";
+import { FIGMA_IMAGES, DRAWING_SCENES, OUTFITS } from "../data/mockData";
+import type { Character, Outfit, Scene } from "../types/character";
 
 const mockCharacters: Character[] = [
   {
@@ -44,7 +36,10 @@ const mockCharacters: Character[] = [
 ];
 
 export function OCPage() {
-  const [activeTab, setActiveTab] = useState<TabName>("DRAWING");
+  const { activeTab, handleTabChange } = useTabSwitch({
+    defaultTab: "DRAWING",
+  });
+
   const [selectedCharacter, setSelectedCharacter] = useState<Character>(
     mockCharacters[0],
   );
@@ -56,10 +51,6 @@ export function OCPage() {
       ? { ...DRAWING_SCENES[0], thumbnail: DRAWING_SCENES[0].thumb }
       : null,
   );
-
-  const handleTabChange = useCallback((tab: TabName) => {
-    setActiveTab(tab);
-  }, []);
 
   const handleCharacterSelect = useCallback((character: Character) => {
     setSelectedCharacter(character);
@@ -77,142 +68,41 @@ export function OCPage() {
     setSelectedScene(scene);
   }, []);
 
-  const renderOCPanel = () => (
-    <div className="flex gap-[2.75rem]">
-      <PreviewPanel
-        image={FIGMA_IMAGES.storyboard.oc}
-        alt="OC Storyboard"
-        aspectRatio="oc"
-      >
-        <CharacterNameOverlay
-          name={OC_CHARACTER.name}
-          nameEn={OC_CHARACTER.nameEn}
-          age={OC_CHARACTER.age}
-          zodiac={OC_CHARACTER.zodiac}
-          birthday={OC_CHARACTER.birthday}
-        />
-      </PreviewPanel>
-
-      <div className="w-[35.75rem] flex flex-col gap-10">
-        <div className="flex flex-col gap-3">
-          <h3 className="text-white font-bold text-[2rem] leading-[1.25em]">
-            CHARACTER PORTRAITS
-          </h3>
-          <div className="relative w-[35.75rem]">
-            <img
-              src={FIGMA_IMAGES.ocComposite}
-              alt="Character Portraits"
-              className="w-full h-auto"
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-3">
-          <h3 className="text-white font-bold text-[2rem] leading-[1.25em]">
-            OUTFIT VARIATIONS
-          </h3>
-          <OutfitGrid
-            outfits={OUTFITS.map((o) => ({ ...o, thumbnail: o.image }))}
-            selectedOutfit={selectedOutfit}
-            onOutfitSelect={handleOutfitSelect}
-          />
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderDrawingPanel = () => (
-    <div className="flex gap-[2.75rem]">
-      <PreviewPanel
-        image={FIGMA_IMAGES.storyboard.drawing}
-        alt="Drawing Storyboard"
-        aspectRatio="drawing"
-      />
-
-      <div className="w-[35.75rem] flex flex-col gap-10">
-        <CharacterPanel
-          characters={mockCharacters}
-          selectedCharacter={selectedCharacter}
-          onCharacterSelect={handleCharacterSelect}
-        />
-
-        <div className="flex flex-col gap-3">
-          <h3 className="text-white font-bold text-[2rem] leading-[1.25em]">
-            EDITING FUNCTIONS
-          </h3>
-          <SceneGrid
-            scenes={DRAWING_SCENES.map((s) => ({ ...s, thumbnail: s.thumb }))}
-            selectedScene={selectedScene}
-            onSceneSelect={handleSceneSelect}
-          />
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderComicsPanel = () => (
-    <div className="flex gap-[2.75rem]">
-      <PreviewPanel
-        image={FIGMA_IMAGES.storyboard.comics}
-        alt="Comics Storyboard"
-        aspectRatio="comics"
-      />
-
-      <div className="w-[35.75rem] flex flex-col gap-10">
-        <CharacterPanel
-          characters={mockCharacters}
-          selectedCharacter={selectedCharacter}
-          onCharacterSelect={handleCharacterSelect}
-        />
-
-        <div className="flex flex-col gap-3">
-          <h3 className="text-white font-bold text-[2rem] leading-[1.25em]">
-            SCENE SELECTOR
-          </h3>
-          <SceneSelector variant="comics" />
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderVideoPanel = () => (
-    <div className="flex gap-[2.75rem]">
-      <PreviewPanel
-        image={FIGMA_IMAGES.storyboard.video}
-        alt="Video Storyboard"
-        aspectRatio="video"
-      >
-        <PlayButton />
-      </PreviewPanel>
-
-      <div className="w-[35.75rem] flex flex-col gap-10">
-        <CharacterPanel
-          characters={mockCharacters}
-          selectedCharacter={selectedCharacter}
-          onCharacterSelect={handleCharacterSelect}
-        />
-
-        <div className="flex flex-col gap-3">
-          <h3 className="text-white font-bold text-[2rem] leading-[1.25em]">
-            SCENE SELECTOR
-          </h3>
-          <SceneSelector variant="video" />
-        </div>
-      </div>
-    </div>
-  );
-
   const renderActivePanel = () => {
     switch (activeTab) {
       case "OC":
-        return renderOCPanel();
+        return (
+          <OCPanel
+            selectedOutfit={selectedOutfit}
+            onOutfitSelect={handleOutfitSelect}
+          />
+        );
       case "DRAWING":
-        return renderDrawingPanel();
+        return (
+          <DrawingPreview
+            characters={mockCharacters}
+            selectedCharacter={selectedCharacter}
+            onCharacterSelect={handleCharacterSelect}
+            selectedScene={selectedScene}
+            onSceneSelect={handleSceneSelect}
+          />
+        );
       case "COMICS":
-        return renderComicsPanel();
+        return (
+          <ComicsPreview
+            characters={mockCharacters}
+            selectedCharacter={selectedCharacter}
+            onCharacterSelect={handleCharacterSelect}
+          />
+        );
       case "VIDEO":
-        return renderVideoPanel();
+        return (
+          <VideoPreview
+            characters={mockCharacters}
+            selectedCharacter={selectedCharacter}
+            onCharacterSelect={handleCharacterSelect}
+          />
+        );
       default:
         return null;
     }
@@ -228,7 +118,7 @@ export function OCPage() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <TopNav activeTab={activeTab} onTabChange={handleTabChange} />
+      <TabNav activeTab={activeTab} onTabChange={handleTabChange} />
 
       <main className="flex-1 px-[3.75rem] py-4">{renderActivePanel()}</main>
 

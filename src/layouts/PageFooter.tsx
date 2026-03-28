@@ -1,6 +1,5 @@
-
-import { RippleButton } from '../ui/RippleButton';
-import { BOTTOM_FEATURES } from '../../data/mockData';
+import { RippleButton } from '../components/common/RippleButton';
+import { BOTTOM_FEATURES } from '../data/mockData';
 
 interface PageFooterProps {
   onTryFreeClick?: () => void;

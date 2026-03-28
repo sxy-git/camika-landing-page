@@ -1,5 +1,4 @@
-
-import { RippleButton } from '../ui/RippleButton';
+import { RippleButton } from '../common/RippleButton';
 import { BOTTOM_FEATURES } from '../../data/mockData';
 
 interface BottomFeaturesProps {

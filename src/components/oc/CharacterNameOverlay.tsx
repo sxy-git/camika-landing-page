@@ -1,5 +1,3 @@
-
-
 interface CharacterNameOverlayProps {
   name: string;
   nameEn: string;

@@ -1,4 +1,3 @@
-
 import { CharacterCard } from '../oc/CharacterCard';
 import type { Character } from '../../types/character';
 

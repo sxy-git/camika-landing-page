@@ -1,5 +1,4 @@
-
-import { RippleButton } from './RippleButton';
+import { RippleButton } from '../common/RippleButton';
 import type { TabName } from '../../data/mockData';
 
 interface TabGroupProps {

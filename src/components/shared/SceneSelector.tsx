@@ -1,4 +1,3 @@
-
 import { FIGMA_IMAGES } from '../../data/mockData';
 
 interface SceneSelectorProps {
