@@ -1,7 +1,7 @@
-import { OCPage } from "./pages/OCPage";
+import { HomePage } from "./pages/HomePage";
 
 function App() {
-  return <OCPage />;
+  return <HomePage />;
 }
 
 export default App;

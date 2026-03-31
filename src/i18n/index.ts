@@ -1,22 +1,22 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import en from './locales/en.json';
-import ja from './locales/ja.json';
-import ko from './locales/ko.json';
-import zhTW from './locales/zh-TW.json';
-import { defaultLanguage, languages, type Language } from './config';
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import en from "./locales/en.json";
+import ja from "./locales/ja.json";
+import ko from "./locales/ko.json";
+import zhTW from "./locales/zh-TW.json";
+import { defaultLanguage, languages, type Language } from "./config";
 
 const resources = {
   en: { translation: en },
   ja: { translation: ja },
   ko: { translation: ko },
-  'zh-TW': { translation: zhTW },
+  "zh-TW": { translation: zhTW },
 };
 
 function getInitialLanguage(): Language {
-  if (typeof window === 'undefined') return defaultLanguage;
+  if (typeof window === "undefined") return defaultLanguage;
 
-  const saved = localStorage.getItem('language');
+  const saved = localStorage.getItem("language");
   if (saved && languages.includes(saved as Language)) {
     return saved as Language;
   }
@@ -26,7 +26,11 @@ function getInitialLanguage(): Language {
     return browserLang as Language;
   }
 
-  const shortLang = browserLang.split('-')[0];
+  if (browserLang.startsWith("zh")) {
+    return defaultLanguage;
+  }
+
+  const shortLang = browserLang.split("-")[0];
   const matched = languages.find((l) => l.startsWith(shortLang));
   return matched || defaultLanguage;
 }

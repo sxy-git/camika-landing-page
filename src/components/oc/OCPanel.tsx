@@ -1,54 +1,74 @@
-import { CharacterNameOverlay } from './CharacterNameOverlay';
-import { OutfitGrid } from './OutfitGrid';
-import { PreviewPanel } from '../common/PreviewPanel';
-import { FIGMA_IMAGES, OC_CHARACTER, OUTFITS } from '../../data/mockData';
-import type { Outfit } from '../../types/character';
+import { CharacterNameOverlay } from "./CharacterNameOverlay";
+import { OutfitGrid } from "./OutfitGrid";
+import { PreviewPanel } from "../common/PreviewPanel";
+import { useOCPanel } from "./useOCPanel";
+import { ActiveBadge } from "../common/ActiveBadge";
 
-interface OCPanelProps {
-  selectedOutfit: Outfit | null;
-  onOutfitSelect: (outfit: Outfit) => void;
-}
+export function OCPanel() {
+  const {
+    characters,
+    selectedCharacter,
+    handleCharacterSelect,
+    selectedOutfit,
+    handleOutfitSelect,
+    t,
+  } = useOCPanel();
 
-export function OCPanel({ selectedOutfit, onOutfitSelect }: OCPanelProps) {
   return (
-    <div className="flex gap-[2.75rem]">
+    <div className="flex gap-11">
       <PreviewPanel
-        image={FIGMA_IMAGES.storyboard.oc}
+        image={"/images/OC_1.png"}
+        titleKey="character_preview"
         alt="OC Storyboard"
-        aspectRatio="oc"
       >
+        {/* <PreviewPanel image={displayImage} alt="OC Storyboard"> */}
         <CharacterNameOverlay
-          name={OC_CHARACTER.name}
-          nameEn={OC_CHARACTER.nameEn}
-          age={OC_CHARACTER.age}
-          zodiac={OC_CHARACTER.zodiac}
-          birthday={OC_CHARACTER.birthday}
+          name={selectedCharacter.nameEn}
+          nameEn={selectedCharacter.name}
+          age={selectedCharacter.age}
+          zodiac={selectedCharacter.zodiac}
+          birthday={selectedCharacter.birthday}
         />
       </PreviewPanel>
 
-      <div className="w-[35.75rem] flex flex-col gap-10">
+      <div className="w-143 flex flex-col gap-10">
         <div className="flex flex-col gap-3">
           <h3 className="text-white font-bold text-[2rem] leading-[1.25em]">
-            CHARACTER PORTRAITS
+            {t("character_portraits")}
           </h3>
-          <div className="relative w-[35.75rem]">
-            <img
-              src={FIGMA_IMAGES.ocComposite}
-              alt="Character Portraits"
-              className="w-full h-auto"
-              loading="lazy"
-            />
+
+          <div className="relative w-143 h-65 gap-5 flex flex-wrap">
+            {characters.map((char, index) => (
+              <button
+                key={char.id}
+                onClick={() => handleCharacterSelect(index)}
+                className={`h-30 w-69 cursor-pointer transition-all overflow-hidden border-3 relative ${
+                  selectedCharacter.id === char.id
+                    ? "bg-yellow/20  border-yellow"
+                    : "bg-red/20 border-red"
+                }`}
+                aria-label={`Select ${char.name}`}
+              >
+                {selectedCharacter.id === char.id && <ActiveBadge />}
+                <img
+                  src={char.image}
+                  alt="Character Portraits"
+                  className="object-top"
+                  loading="lazy"
+                />
+              </button>
+            ))}
           </div>
         </div>
 
         <div className="flex flex-col gap-3">
           <h3 className="text-white font-bold text-[2rem] leading-[1.25em]">
-            OUTFIT VARIATIONS
+            {t("outfit_variations")}
           </h3>
           <OutfitGrid
-            outfits={OUTFITS.map((o) => ({ ...o, thumbnail: o.image }))}
+            outfits={selectedCharacter.outfits}
             selectedOutfit={selectedOutfit}
-            onOutfitSelect={onOutfitSelect}
+            onOutfitSelect={handleOutfitSelect}
           />
         </div>
       </div>

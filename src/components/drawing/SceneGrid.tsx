@@ -1,61 +1,61 @@
-import { useCallback, useState } from 'react';
-import type { Scene } from '../../types/character';
+import { useTranslation } from "react-i18next";
+import type { Scene } from "../../types/character";
 
 interface SceneGridProps {
-  scenes: Scene[];
-  selectedScene: Scene | null;
-  onSceneSelect: (scene: Scene) => void;
+  scenes: Scene[]; // 场景列表
+  selectedScene: Scene | null; // 当前选中的场景
 }
 
-export function SceneGrid({ scenes, selectedScene, onSceneSelect }: SceneGridProps) {
-  const [, setFlash] = useState(false);
+/**
+ * @description 场景网格组件，以网格形式展示可选场景
+ * @param scenes - 场景列表
+ * @param selectedScene - 当前选中的场景
+ * @returns 场景网格 React 组件
+ */
+export function SceneGrid({ scenes, selectedScene }: SceneGridProps) {
+  const { t } = useTranslation();
+  const firstRow = scenes.slice(0, 3); // 第一行场景（最多3个）
+  const secondRow = scenes.slice(3, 6); // 第二行场景（最多3个）
 
-  const handleSceneClick = useCallback((scene: Scene) => {
-    setFlash(true);
-    setTimeout(() => setFlash(false), 240);
-    onSceneSelect(scene);
-  }, [onSceneSelect]);
-
-  const firstRow = scenes.slice(0, 3);
-  const secondRow = scenes.slice(3, 6);
-
+  /**
+   * @description 渲染单个场景缩略图
+   * @param scene - 场景对象
+   * @returns 场景缩略图 React 元素
+   */
   const renderSceneThumb = (scene: Scene) => {
-    const isSelected = selectedScene?.id === scene.id;
+    const isSelected = selectedScene?.id === scene.id; // 判断是否被选中
     return (
       <div
         key={scene.id}
-        onClick={() => handleSceneClick(scene)}
         className="scene-thumb flex flex-col items-center gap-1.5 cursor-pointer"
       >
-        <img
-          src={scene.thumbnail}
-          alt={scene.name}
-          className={`w-[11.0625rem] h-[6.75rem] object-cover bg-black transition-all duration-200 ${
-            isSelected
-              ? 'border-[0.203125rem] border-yellow shadow-[inset_0_0_1.0625rem_0_rgba(254,230,29,0.4)] scale-[1.04]'
-              : 'border-[0.203125rem] border-red hover:border-yellow'
-          }`}
-          loading="lazy"
-        />
-        <span
-          className={`font-normal text-[1.25rem] leading-[1.4em] text-center ${
-            isSelected ? 'text-yellow' : 'text-white'
-          }`}
+        <div
+          className={`w-44.25 h-27  bg-black flex items-center justify-center border-3 ${isSelected ? "border-yellow" : "border-red"}`}
         >
-          {scene.name}
+          <img
+            src={scene.image}
+            alt={t(scene.name)}
+            className={`size-17.5 object-contain`}
+            loading="lazy"
+          />
+        </div>
+
+        <span
+          className={`font-normal truncate text-[1.25rem] leading-[1.4em] text-center  ${
+            isSelected ? "text-yellow" : "text-white"
+          }`}
+          title={t(scene.name)}
+        >
+          {t(scene.name)}
         </span>
       </div>
     );
   };
 
   return (
-    <div className="flex flex-col gap-4 w-[35.75rem]">
-      <div className="flex gap-5">
-        {firstRow.map(renderSceneThumb)}
-      </div>
-      <div className="flex gap-5">
-        {secondRow.map(renderSceneThumb)}
-      </div>
+    <div className="flex flex-col gap-4 w-143">
+      <div className="flex gap-5">{firstRow.map(renderSceneThumb)}</div>
+      <div className="flex gap-5">{secondRow.map(renderSceneThumb)}</div>
     </div>
   );
 }

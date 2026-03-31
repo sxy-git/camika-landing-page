@@ -1,48 +1,44 @@
+import { useTranslation } from "react-i18next";
 import { CharacterPanel } from "../shared/CharacterPanel";
 import { SceneGrid } from "./SceneGrid";
 import { PreviewPanel } from "../common/PreviewPanel";
-import { FIGMA_IMAGES, DRAWING_SCENES } from "../../data/mockData";
-import type { Character, Scene } from "../../types/character";
+import { DRAWING_SCENES, useDrawingPanel } from "./useDrawingPanel";
+import { FIGMA_IMAGES } from "../../data/mockData";
 
-interface DrawingPreviewProps {
-  characters: Character[];
-  selectedCharacter: Character | null;
-  onCharacterSelect: (character: Character) => void;
-  selectedScene: Scene | null;
-  onSceneSelect: (scene: Scene) => void;
-}
-
-export function DrawingPreview({
-  characters,
-  selectedCharacter,
-  onCharacterSelect,
-  selectedScene,
-  onSceneSelect,
-}: DrawingPreviewProps) {
+/**
+ * @description 绘图预览组件，展示绘图故事板、角色选择和场景网格
+ * @returns 绘图预览面板 React 组件
+ */
+export function DrawingPreview() {
+  const { t } = useTranslation();
+  const {
+    characters,
+    selectedCharacter,
+    handleCharacterSelect,
+    selectedScene,
+  } = useDrawingPanel();
   return (
-    <div className="flex gap-[2.75rem]">
+    <div className="flex gap-11">
       <PreviewPanel
-        image={FIGMA_IMAGES.storyboard.drawing}
+        image={
+          selectedCharacter?.image || FIGMA_IMAGES.storyboard.drawing || ""
+        }
+        titleKey="storyboard_preview"
         alt="Drawing Storyboard"
-        aspectRatio="drawing"
       />
 
-      <div className="w-[35.75rem] flex flex-col gap-10">
+      <div className="w-143 flex flex-col gap-10">
         <CharacterPanel
           characters={characters}
           selectedCharacter={selectedCharacter}
-          onCharacterSelect={onCharacterSelect}
+          onCharacterSelect={handleCharacterSelect}
         />
 
         <div className="flex flex-col gap-3">
           <h3 className="text-white font-bold text-[2rem] leading-[1.25em]">
-            EDITING FUNCTIONS
+            {t("editing_functions")}
           </h3>
-          <SceneGrid
-            scenes={DRAWING_SCENES.map((s) => ({ ...s, thumbnail: s.thumb }))}
-            selectedScene={selectedScene}
-            onSceneSelect={onSceneSelect}
-          />
+          <SceneGrid scenes={DRAWING_SCENES} selectedScene={selectedScene} />
         </div>
       </div>
     </div>

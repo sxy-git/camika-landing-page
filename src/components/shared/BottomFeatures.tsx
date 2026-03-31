@@ -1,10 +1,15 @@
-import { RippleButton } from '../common/RippleButton';
-import { BOTTOM_FEATURES } from '../../data/mockData';
+import { RippleButton } from "../common/RippleButton";
+import { BOTTOM_FEATURES } from "../../data/mockData";
 
 interface BottomFeaturesProps {
-  onTryFreeClick?: () => void;
+  onTryFreeClick?: () => void; // 点击"免费试用"按钮的回调函数
 }
 
+/**
+ * @description 底部功能区域组件，展示功能特点和"免费试用"按钮
+ * @param onTryFreeClick - 点击"免费试用"按钮的回调函数
+ * @returns 底部功能区域 React 组件
+ */
 export function BottomFeatures({ onTryFreeClick }: BottomFeaturesProps) {
   return (
     <div className="w-full flex items-center justify-between gap-[4.0625rem]">

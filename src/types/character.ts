@@ -1,14 +1,13 @@
 export interface Outfit {
   id: string;
   name: string;
-  thumbnail: string;
   image: string;
 }
 
 export interface Scene {
   id: string;
   name: string;
-  thumbnail: string;
+  image: string;
 }
 
 export interface Character {
@@ -18,9 +17,9 @@ export interface Character {
   age: string;
   birthday: string;
   zodiac: string;
-  thumbnail: string;
   image: string;
   outfits: Outfit[];
+  video?: string;
 }
 
 export interface Tab {

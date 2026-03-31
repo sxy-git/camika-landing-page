@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react';
-import type { TabName } from '../data/mockData';
+import { useState, useCallback } from "react";
+import type { TabName } from "../data/mockData";
 
 interface UseTabSwitchOptions {
   defaultTab?: TabName;
@@ -13,7 +13,7 @@ interface UseTabSwitchReturn {
 }
 
 export function useTabSwitch({
-  defaultTab = 'DRAWING',
+  defaultTab = "DRAWING",
   onTabChange,
 }: UseTabSwitchOptions = {}): UseTabSwitchReturn {
   const [activeTab, setActiveTab] = useState<TabName>(defaultTab);
