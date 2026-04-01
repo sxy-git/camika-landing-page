@@ -41,7 +41,9 @@ export function HomePage() {
   const [isVisible, setIsVisible] = useState(true);
   const [displayTab, setDisplayTab] = useState(activeTab);
   const [translateX, setTranslateX] = useState(0);
-
+  const handleLoginClick = () => {
+    window.location.href = "https://www.camika.ai/login";
+  };
   useEffect(() => {
     if (activeTab !== displayTab) {
       const slideDistance = 10;
@@ -138,7 +140,11 @@ export function HomePage() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <TabNav activeTab={activeTab} onTabChange={handleTabChange} />
+      <TabNav
+        activeTab={activeTab}
+        onTabChange={handleTabChange}
+        onLoginClick={handleLoginClick}
+      />
 
       <main
         className="flex-1 px-15 pt-9 transition-all duration-200"
@@ -150,7 +156,7 @@ export function HomePage() {
         {renderActivePanel()}
       </main>
 
-      <PageFooter activeTab={activeTab} />
+      <PageFooter activeTab={activeTab} onTryFreeClick={handleLoginClick} />
     </div>
   );
 }
