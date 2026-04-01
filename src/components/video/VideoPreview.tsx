@@ -37,8 +37,8 @@ export function VideoPreview() {
           )}
           {selectedCharacter?.video && isShowVideo && (
             <iframe
-              width="1030"
-              height="580"
+              className="w-full h-full"
+              allowFullScreen
               src={selectedCharacter?.video}
               onLoad={() => setIsVideoLoaded(true)}
               title="YouTube video player"

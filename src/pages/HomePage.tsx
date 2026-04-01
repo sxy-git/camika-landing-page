@@ -132,7 +132,7 @@ export function HomePage() {
 
   return (
     <div
-      className="h-full flex flex-col"
+      className="h-full flex flex-col select-none"
       style={{
         backgroundImage: `url(${FIGMA_IMAGES.bgHero})`,
         backgroundSize: "cover",

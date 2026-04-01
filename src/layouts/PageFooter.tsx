@@ -2,11 +2,14 @@ import { useTranslation } from "react-i18next";
 import { RippleButton } from "../components/common/RippleButton";
 import type { TabName } from "../data/mockData";
 import { useState } from "react";
+import PolicyDialog from "../components/common/PolicyDialog";
 
 interface PageFooterProps {
   activeTab: TabName;
   onTryFreeClick?: () => void;
 }
+
+type PolicyType = "Privacy Policy" | "Terms and Conditions";
 
 /**
  * @description 页面底部组件，根据当前 tab 动态展示功能特点和版权信息
@@ -16,6 +19,7 @@ interface PageFooterProps {
  */
 export function PageFooter({ activeTab, onTryFreeClick }: PageFooterProps) {
   const { t } = useTranslation();
+  const [policyDialog, setPolicyDialog] = useState<PolicyType | null>(null);
   const [data] = useState({
     OC: [
       {
@@ -138,9 +142,30 @@ export function PageFooter({ activeTab, onTryFreeClick }: PageFooterProps) {
       </div>
 
       <div className="text-white/80 font-normal text-[1.25rem] leading-[1.2em]">
-        © 2026 Camika · {t("privacy_policy")} | {t("terms_of_service")} |{" "}
+        © 2026 Camika ·
+        <button
+          onClick={() => setPolicyDialog("Privacy Policy")}
+          className="hover:text-white cursor-pointer transition-colors"
+        >
+          {t("privacy_policy")}
+        </button>
+        {" | "}
+        <button
+          onClick={() => setPolicyDialog("Terms and Conditions")}
+          className="hover:text-white cursor-pointer transition-colors"
+        >
+          {t("terms_of_service")}
+        </button>
+        {" | "}
         {t("contact")}
       </div>
+
+      {policyDialog && (
+        <PolicyDialog
+          type={policyDialog}
+          onClose={() => setPolicyDialog(null)}
+        />
+      )}
     </footer>
   );
 }
