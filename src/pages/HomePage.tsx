@@ -1,12 +1,37 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { TabNav } from "../layouts/TabNav/TabNav";
 import { PageFooter } from "../layouts/PageFooter";
-import { OCPanel } from "../components/oc/OCPanel";
-import { DrawingPreview } from "../components/drawing/DrawingPreview";
-import { ComicsPreview } from "../components/Comics/ComicsPreview";
-import { VideoPreview } from "../components/video/VideoPreview";
 import { useTabSwitch } from "../hooks/use-tab-switch";
 import { FIGMA_IMAGES } from "../data/mockData";
+
+const OCPanel = lazy(() =>
+  import("../components/oc/OCPanel").then((m) => ({ default: m.OCPanel })),
+);
+const DrawingPreview = lazy(() =>
+  import("../components/drawing/DrawingPreview").then((m) => ({
+    default: m.DrawingPreview,
+  })),
+);
+const ComicsPreview = lazy(() =>
+  import("../components/Comics/ComicsPreview").then((m) => ({
+    default: m.ComicsPreview,
+  })),
+);
+const VideoPreview = lazy(() =>
+  import("../components/video/VideoPreview").then((m) => ({
+    default: m.VideoPreview,
+  })),
+);
+
+const prefetchCache = new Set<string>();
+
+function LoadingFallback() {
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+    </div>
+  );
+}
 
 export function HomePage() {
   const { activeTab, handleTabChange } = useTabSwitch({
@@ -39,16 +64,65 @@ export function HomePage() {
     }
   }, [activeTab, displayTab]);
 
+  useEffect(() => {
+    const prefetchTabs = () => {
+      const otherTabs = ["DRAWING", "COMICS", "VIDEO"].filter(
+        (tab) => tab !== activeTab,
+      );
+      otherTabs.forEach((tab) => {
+        if (prefetchCache.has(tab)) {
+          return;
+        }
+        prefetchCache.add(tab);
+        switch (tab) {
+          case "DRAWING":
+            import("../components/drawing/DrawingPreview");
+            break;
+          case "COMICS":
+            import("../components/Comics/ComicsPreview");
+            break;
+          case "VIDEO":
+            import("../components/video/VideoPreview");
+            break;
+        }
+      });
+    };
+
+    if ("requestIdleCallback" in window) {
+      const idleId = requestIdleCallback(prefetchTabs, { timeout: 2000 });
+      return () => cancelIdleCallback(idleId);
+    } else {
+      const timer = setTimeout(prefetchTabs, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [activeTab]);
+
   const renderActivePanel = () => {
     switch (displayTab) {
       case "OC":
-        return <OCPanel />;
+        return (
+          <Suspense fallback={<LoadingFallback />}>
+            <OCPanel />
+          </Suspense>
+        );
       case "DRAWING":
-        return <DrawingPreview />;
+        return (
+          <Suspense fallback={<LoadingFallback />}>
+            <DrawingPreview />
+          </Suspense>
+        );
       case "COMICS":
-        return <ComicsPreview />;
+        return (
+          <Suspense fallback={<LoadingFallback />}>
+            <ComicsPreview />
+          </Suspense>
+        );
       case "VIDEO":
-        return <VideoPreview />;
+        return (
+          <Suspense fallback={<LoadingFallback />}>
+            <VideoPreview />
+          </Suspense>
+        );
       default:
         return null;
     }

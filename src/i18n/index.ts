@@ -27,7 +27,7 @@ function getInitialLanguage(): Language {
   }
 
   if (browserLang.startsWith("zh")) {
-    return defaultLanguage;
+    return "zh-TW";
   }
 
   const shortLang = browserLang.split("-")[0];

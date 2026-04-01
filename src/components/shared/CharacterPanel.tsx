@@ -32,7 +32,7 @@ export function CharacterPanel({
             key={char.id}
             id={char.id}
             name={char.name}
-            image={char.image}
+            image={char.image || ""}
             isActive={selectedCharacter?.id === char.id}
             onClick={() => onCharacterSelect(char)}
           />

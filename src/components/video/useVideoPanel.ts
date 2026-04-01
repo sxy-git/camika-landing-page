@@ -1,28 +1,33 @@
 import { useState, useCallback } from "react";
 import type { Character } from "../../types/character";
+import { handleLoadImage } from "@/utils";
 
 const VIDEO_CHARACTERS: Character[] = [
   {
     id: "video_char_1",
-    name: "WAVE",
-    nameEn: "",
-    age: "16",
-    birthday: "MAR.20",
-    zodiac: "PISCES",
-    image: "",
-    outfits: [],
+    name: "qing_lan_name",
+    info: "qing_lan_info",
+    image: handleLoadImage("oc_1_5.png"),
     video: "https://www.youtube.com/embed/29SQ3GTJNPM?si=k1rCf4CE9XEcJHT2",
+    scenes: [
+      handleLoadImage("comic_scene_1_1.png"),
+      handleLoadImage("comic_scene_1_2.png"),
+      handleLoadImage("comic_scene_1_3.png"),
+      handleLoadImage("comic_scene_1_4.png"),
+    ],
   },
   {
     id: "video_char_2",
-    name: "STORM",
-    nameEn: "",
-    age: "19",
-    birthday: "NOV.11",
-    zodiac: "SCORPIO",
-    image: "",
-    outfits: [],
+    name: "cang_yue_name",
+    info: "cang_yue_info",
+    image: handleLoadImage("oc_3_5.png"),
     video: "https://www.youtube.com/embed/o8Yz7SOiPTI?si=r354LJyAhWkQfvO_",
+    scenes: [
+      handleLoadImage("comic_scene_1_1.png"),
+      handleLoadImage("comic_scene_1_2.png"),
+      handleLoadImage("comic_scene_1_3.png"),
+      handleLoadImage("comic_scene_1_4.png"),
+    ],
   },
 ];
 

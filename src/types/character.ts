@@ -13,13 +13,12 @@ export interface Scene {
 export interface Character {
   id: string;
   name: string;
-  nameEn: string;
-  age: string;
-  birthday: string;
-  zodiac: string;
-  image: string;
-  outfits: Outfit[];
+  info: string;
+  image?: string;
+  previewImage?: string;
   video?: string;
+  images?: string[];
+  scenes?: string[];
 }
 
 export interface Tab {

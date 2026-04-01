@@ -3,7 +3,6 @@ import { CharacterPanel } from "../shared/CharacterPanel";
 import { SceneGrid } from "./SceneGrid";
 import { PreviewPanel } from "../common/PreviewPanel";
 import { DRAWING_SCENES, useDrawingPanel } from "./useDrawingPanel";
-import { FIGMA_IMAGES } from "../../data/mockData";
 
 /**
  * @description 绘图预览组件，展示绘图故事板、角色选择和场景网格
@@ -20,9 +19,7 @@ export function DrawingPreview() {
   return (
     <div className="flex gap-11">
       <PreviewPanel
-        image={
-          selectedCharacter?.image || FIGMA_IMAGES.storyboard.drawing || ""
-        }
+        image={selectedCharacter?.previewImage || ""}
         titleKey="storyboard_preview"
         alt="Drawing Storyboard"
       />

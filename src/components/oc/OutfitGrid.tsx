@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import type { Outfit } from "../../types/character";
+import { IMAGE_COMPRESS } from "@/utils";
 
 interface OutfitGridProps {
   outfits: Outfit[]; // 服装列表
@@ -58,7 +59,7 @@ export function OutfitGrid({
           }`}
         >
           <img
-            src={outfit.image}
+            src={outfit.image + IMAGE_COMPRESS}
             alt={outfit.name}
             className="object-cover size-full scale-125"
             loading="lazy"

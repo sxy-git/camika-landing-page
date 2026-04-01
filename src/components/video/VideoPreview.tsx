@@ -59,7 +59,7 @@ export function VideoPreview() {
           <h3 className="text-white font-bold text-[2rem] leading-[1.25em]">
             {t("scene_selector")}
           </h3>
-          <SceneSelector variant="video" />
+          <SceneSelector scenes={selectedCharacter?.scenes || []} />
         </div>
       </div>
     </div>

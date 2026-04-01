@@ -1,30 +1,45 @@
 import { useState, useCallback } from "react";
-import { FIGMA_IMAGES } from "../../data/mockData";
 import type { Character } from "../../types/character";
+import { handleLoadImage } from "@/utils";
 
 const COMICS_CHARACTERS: Character[] = [
   {
     id: "comics_char_1",
-    name: "HERO STAR",
-    nameEn: "",
-    age: "20",
-    birthday: "JUN.15",
-    zodiac: "GEMINI",
-    image: FIGMA_IMAGES.characters.active,
-    outfits: [],
+    name: "qing_lan_name",
+    info: "qing_lan_info",
+    image: handleLoadImage("oc_1_5.png"),
+    previewImage: handleLoadImage("drawing_2_2.png", "big"),
+    images: [
+      handleLoadImage("comic_1_1.png"),
+      handleLoadImage("comic_1_2.png"),
+      handleLoadImage("comic_1_3.png"),
+    ],
+    scenes: [
+      handleLoadImage("comic_scene_1_1.png"),
+      handleLoadImage("comic_scene_1_2.png"),
+      handleLoadImage("comic_scene_1_3.png"),
+      handleLoadImage("comic_scene_1_4.png"),
+    ],
   },
   {
     id: "comics_char_2",
-    name: "SHADOW",
-    nameEn: "",
-    age: "22",
-    birthday: "DEC.01",
-    zodiac: "SAGITTARIUS",
-    image: FIGMA_IMAGES.characters.scarlett,
-    outfits: [],
+    name: "cang_yue_name",
+    info: "cang_yue_info",
+    image: handleLoadImage("oc_3_5.png"),
+    previewImage: handleLoadImage("drawing_1_2.png", "big"),
+    images: [
+      handleLoadImage("comic_2_1.png"),
+      handleLoadImage("comic_2_2.png"),
+      handleLoadImage("comic_2_3.png"),
+    ],
+    scenes: [
+      handleLoadImage("comic_scene_1_1.png"),
+      handleLoadImage("comic_scene_1_2.png"),
+      handleLoadImage("comic_scene_1_3.png"),
+      handleLoadImage("comic_scene_1_4.png"),
+    ],
   },
 ];
-
 export interface UseComicsPanelReturn {
   characters: Character[];
   selectedCharacter: Character | null;

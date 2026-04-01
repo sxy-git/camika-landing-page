@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CharacterPanel } from "../shared/CharacterPanel";
 import { SceneSelector } from "../shared/SceneSelector";
 import { PreviewPanel } from "../common/PreviewPanel";
@@ -15,7 +15,7 @@ export function ComicsPreview() {
   const { characters, selectedCharacter, handleCharacterSelect } =
     useComicsPanel();
 
-  const comicsImages = FIGMA_IMAGES.storyboard.comics;
+  const comicsImages = selectedCharacter?.images || [];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
@@ -29,7 +29,11 @@ export function ComicsPreview() {
       prev === comicsImages.length - 1 ? 0 : prev + 1,
     );
   };
-
+  useEffect(() => {
+    if (selectedCharacter?.id) {
+      setCurrentIndex(0);
+    }
+  }, [selectedCharacter?.id]);
   return (
     <div className="flex gap-11">
       <PreviewPanel
@@ -42,22 +46,24 @@ export function ComicsPreview() {
             onClick={handlePrev}
             className="w-[3.7rem] h-22 cursor-pointer transition-all duration-300 active:scale-95 hover:scale-110"
             aria-label="previous"
+            disabled={currentIndex === 0}
           >
             <img
               src={FIGMA_IMAGES.rightIcon}
               alt="prev"
-              className="size-full rotate-180"
+              className={`size-full rotate-180 ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : ""}`}
             />
           </button>
           <button
             onClick={handleNext}
             className="w-[3.7rem] h-22 cursor-pointer transition-all duration-300 active:scale-95 hover:scale-110"
             aria-label="next"
+            disabled={currentIndex === comicsImages.length - 1}
           >
             <img
               src={FIGMA_IMAGES.rightIcon}
               alt="next"
-              className="size-full"
+              className={`size-full ${currentIndex === comicsImages.length - 1 ? "opacity-50 cursor-not-allowed" : ""}`}
             />
           </button>
         </div>
@@ -74,7 +80,7 @@ export function ComicsPreview() {
           <h3 className="text-white font-bold text-[2rem] leading-[1.25em]">
             {t("scene_selector")}
           </h3>
-          <SceneSelector variant="comics" />
+          <SceneSelector scenes={selectedCharacter?.scenes || []} />
         </div>
       </div>
     </div>

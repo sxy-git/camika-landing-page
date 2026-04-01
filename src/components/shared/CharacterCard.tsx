@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { ActiveBadge } from "../common/ActiveBadge";
+import { useTranslation } from "react-i18next";
 
 interface CharacterCardProps {
   id: string;
@@ -16,6 +17,8 @@ export function CharacterCard({
   isActive = false,
   onClick,
 }: CharacterCardProps) {
+  const { t } = useTranslation();
+
   const handleClick = useCallback(() => {
     if (onClick) {
       onClick(id);
@@ -28,14 +31,14 @@ export function CharacterCard({
       : "bg-[#4A1B11] border-red/50 shadow-[inset_0_0_1rem_0_rgba(221,51,51,0.15)]"
   }`;
 
-  const labelClass = `absolute bottom-1 w-[98%] left-[1%] h-16.25 flex items-center justify-center p-3 border-t-3 transition-all duration-200 ${
+  const labelClass = `absolute bottom-1 w-[98%] left-[1%] h-16.25 flex items-center justify-center  border-t-3 transition-all duration-200 ${
     isActive
       ? "bg-[#2F3220] shadow-[-0_0.1875rem_0_0_#fee61d] border-yellow"
       : "bg-[#310E0E] shadow-[-0_0.1875rem_0_0_#d33] border-red"
   }`;
 
-  const labelTextClass = `font-bold text-[1.75rem] leading-[1.286em] transition-all duration-200 ${
-    isActive ? "text-yellow" : "text-red uppercase text-center"
+  const labelTextClass = `font-bold text-[1.5rem] leading-[1.286em] transition-all duration-200 ${
+    isActive ? "text-yellow" : "text-red text-center"
   }`;
 
   const cardClass = `relative size-69 cursor-pointer transition-all duration-200  ${
@@ -55,7 +58,7 @@ export function CharacterCard({
       </div>
 
       <div className={labelClass}>
-        <span className={labelTextClass}>{name}</span>
+        <span className={labelTextClass}>{t(name)}</span>
       </div>
     </div>
   );

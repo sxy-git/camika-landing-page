@@ -3,6 +3,7 @@ import { OutfitGrid } from "./OutfitGrid";
 import { PreviewPanel } from "../common/PreviewPanel";
 import { useOCPanel } from "./useOCPanel";
 import { ActiveBadge } from "../common/ActiveBadge";
+import { IMAGE_COMPRESS } from "@/utils";
 
 export function OCPanel() {
   const {
@@ -17,17 +18,13 @@ export function OCPanel() {
   return (
     <div className="flex gap-11">
       <PreviewPanel
-        image={"/images/OC_1.png"}
+        image={(selectedOutfit?.image || "") + IMAGE_COMPRESS}
         titleKey="character_preview"
         alt="OC Storyboard"
       >
-        {/* <PreviewPanel image={displayImage} alt="OC Storyboard"> */}
         <CharacterNameOverlay
-          name={selectedCharacter.nameEn}
-          nameEn={selectedCharacter.name}
-          age={selectedCharacter.age}
-          zodiac={selectedCharacter.zodiac}
-          birthday={selectedCharacter.birthday}
+          name={selectedCharacter.name}
+          info={selectedCharacter.info}
         />
       </PreviewPanel>
 

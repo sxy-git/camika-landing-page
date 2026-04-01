@@ -1,9 +1,13 @@
 import { useState, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { FIGMA_IMAGES } from "../../data/mockData";
-import type { Character, Outfit } from "../../types/character";
+import type { Outfit } from "../../types/character";
+import { handleLoadImage, IMAGE_PLACEHOLDER } from "@/utils";
 
-export interface OCCharacter extends Character {
+export interface OCCharacter {
+  id: string;
+  name: string;
+  info: string;
+  image: string;
   outfits: Array<{
     id: string;
     name: string;
@@ -27,88 +31,71 @@ export interface OutfitData {
 const MOCK_CHARACTERS_RAW: Array<{
   id: string;
   name: string;
-  nameEn: string;
-  age: string;
-  birthday: string;
-  zodiac: string;
+  info: string;
   image: string;
 }> = [
   {
-    id: "active",
-    name: "ACTIVE",
-    nameEn: "",
-    age: "17",
-    birthday: "JAN.01",
-    zodiac: "zodiac.capricorn",
-    image: FIGMA_IMAGES.characters.active,
+    id: "qing_lan",
+    name: "qing_lan_name",
+    info: "qing_lan_info",
+    image: handleLoadImage("oc_1_1.png"),
   },
   {
-    id: "silver_hawk",
-    name: "SILVER HAWK",
-    nameEn: "zodiac.silver_hawk",
-    age: "18",
-    birthday: "FEB.14",
-    zodiac: "zodiac.aquarius",
-    image: FIGMA_IMAGES.characters.scarlett,
+    id: "shuang_yue",
+    name: "shuang_yue_name",
+    info: "shuang_yue_info",
+    image: handleLoadImage("oc_2_1.png"),
   },
   {
-    id: "blue_wolf",
-    name: "BLUE WOLF",
-    nameEn: "zodiac.blue_wolf",
-    age: "19",
-    birthday: "MAR.15",
-    zodiac: "zodiac.pisces",
-    image: FIGMA_IMAGES.storyboard.oc,
+    id: "cang_yue",
+    name: "cang_yue_name",
+    info: "cang_yue_info",
+    image: handleLoadImage("oc_3_1.png"),
   },
   {
-    id: "night_rose",
-    name: "NIGHT ROSE",
-    nameEn: "zodiac.night_rose",
-    age: "16",
-    birthday: "APR.20",
-    zodiac: "zodiac.aries",
-    image: FIGMA_IMAGES.characters.scarlett,
+    id: "red_ye",
+    name: "red_ye_name",
+    info: "red_ye_info",
+    image: handleLoadImage("oc_4_1.png"),
   },
 ];
-export const OUTFITS: OutfitData[] = FIGMA_IMAGES.outfits.map((img, i) => ({
-  id: `outfit_${String(i + 1).padStart(2, "0")}`,
-  name: "",
-  image: img,
-}));
+
 export function useOCPanel(): UseOCPanelReturn {
   const { t, i18n } = useTranslation();
 
   const [selectedCharacterIndex, setSelectedCharacterIndex] = useState(0);
 
-  const [selectedOutfit, setSelectedOutfit] = useState<Outfit | null>(
-    OUTFITS[0] ? { ...OUTFITS[0] } : null,
-  );
+  const [selectedOutfit, setSelectedOutfit] = useState<Outfit | null>({
+    id: "outfit_01",
+    name: t("outfit_01"),
+    image: IMAGE_PLACEHOLDER + "oc_1_1.png",
+  });
 
   const characters = useMemo<OCCharacter[]>(() => {
-    return MOCK_CHARACTERS_RAW.map((char) => ({
-      ...char,
-      zodiac: t(`oc.zodiac.${char.zodiac.replace("zodiac.", "")}`),
-      nameEn: char.nameEn.startsWith("zodiac.")
-        ? t(`oc.name.${char.nameEn.replace("zodiac.", "")}`)
-        : char.nameEn,
-      outfits: OUTFITS.map((o, i) => ({
+    return MOCK_CHARACTERS_RAW.map((char, index) => ({
+      id: char.id,
+      name: t(`${char.name}`),
+      info: t(`${char.info}`),
+      image: char.image,
+      outfits: new Array(8).fill(0).map((_, i) => ({
         id: `outfit_${String(i + 1).padStart(2, "0")}`,
         name: t(`outfit_${String(i + 1).padStart(2, "0")}`),
-        image: o.image,
+        image: IMAGE_PLACEHOLDER + "oc_" + (index + 1) + "_" + (i + 1) + ".png",
       })),
     }));
   }, [t, i18n.language]);
 
-  const handleCharacterSelect = useCallback((index: number) => {
-    setSelectedCharacterIndex(index);
-    if (OUTFITS.length > 0) {
+  const handleCharacterSelect = useCallback(
+    (index: number) => {
+      setSelectedCharacterIndex(index);
       setSelectedOutfit({
         id: `outfit_01`,
-        name: OUTFITS[0]?.name || "",
-        image: OUTFITS[0]?.image || "",
+        name: characters[index].outfits[0]?.name || "",
+        image: characters[index].outfits[0]?.image || "",
       });
-    }
-  }, []);
+    },
+    [characters],
+  );
 
   const handleOutfitSelect = useCallback((outfit: Outfit) => {
     setSelectedOutfit(outfit);

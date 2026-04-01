@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
-import { FIGMA_IMAGES } from "../../data/mockData";
 import type { Character, Scene } from "../../types/character";
+import { handleLoadImage } from "@/utils";
 export interface SceneData {
   id: string;
   name: string;
@@ -9,23 +9,17 @@ export interface SceneData {
 const DRAWING_CHARACTERS: Character[] = [
   {
     id: "drawing_char_1",
-    name: "NANO",
-    nameEn: "",
-    age: "15",
-    birthday: "MAY.10",
-    zodiac: "TAURUS",
-    image: FIGMA_IMAGES.characters.active,
-    outfits: [],
+    name: "qing_lan_name",
+    info: "qing_lan_info",
+    image: handleLoadImage("oc_1_5.png"),
+    previewImage: handleLoadImage("drawing_2_2.png", "big"),
   },
   {
     id: "drawing_char_2",
-    name: "KAI",
-    nameEn: "",
-    age: "18",
-    birthday: "AUG.22",
-    zodiac: "LEO",
-    image: FIGMA_IMAGES.characters.scarlett,
-    outfits: [],
+    name: "cang_yue_name",
+    info: "cang_yue_info",
+    image: handleLoadImage("oc_3_5.png"),
+    previewImage: handleLoadImage("drawing_1_2.png", "big"),
   },
 ];
 export const DRAWING_SCENES: SceneData[] = [
