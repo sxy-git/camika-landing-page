@@ -53,21 +53,6 @@ export function TabNav({ activeTab, onTabChange, onLoginClick }: TabNavProps) {
       />
 
       <div className="flex shrink-0 items-center gap-4">
-        <label className="flex items-center gap-2 text-sm text-neutral-400">
-          <span className="whitespace-nowrap">调试</span>
-          <select
-            aria-label="多语言调试"
-            value={currentLang}
-            onChange={handleLanguageChange}
-            className="h-11 min-w-38 cursor-pointer rounded-md border border-neutral-600 bg-[#1a1a1a] px-2.5 text-sm text-white outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60"
-          >
-            {languages.map((code) => (
-              <option key={code} value={code}>
-                {languageNames[code]}
-              </option>
-            ))}
-          </select>
-        </label>
         <RippleButton
           variant="login"
           onClick={onLoginClick}

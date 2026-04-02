@@ -5,8 +5,8 @@ import { handleLoadImage } from "@/utils";
 const VIDEO_CHARACTERS: Character[] = [
   {
     id: "video_char_1",
-    name: "qing_lan_name",
-    info: "qing_lan_info",
+    name: "shuang_yue_name",
+    info: "shuang_yue_info",
     image: handleLoadImage("oc_1_5.png"),
     video: "https://www.youtube.com/embed/29SQ3GTJNPM?si=k1rCf4CE9XEcJHT2",
     scenes: [
@@ -18,8 +18,8 @@ const VIDEO_CHARACTERS: Character[] = [
   },
   {
     id: "video_char_2",
-    name: "cang_yue_name",
-    info: "cang_yue_info",
+    name: "red_ye_name",
+    info: "red_ye_info",
     image: handleLoadImage("oc_3_5.png"),
     video: "https://www.youtube.com/embed/o8Yz7SOiPTI?si=r354LJyAhWkQfvO_",
     scenes: [

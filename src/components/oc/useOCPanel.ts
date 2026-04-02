@@ -35,27 +35,27 @@ const MOCK_CHARACTERS_RAW: Array<{
   image: string;
 }> = [
   {
-    id: "qing_lan",
-    name: "qing_lan_name",
-    info: "qing_lan_info",
-    image: handleLoadImage("oc_1_1.png"),
-  },
-  {
     id: "shuang_yue",
     name: "shuang_yue_name",
     info: "shuang_yue_info",
+    image: handleLoadImage("oc_1_1.png"),
+  },
+  {
+    id: "qing_lan",
+    name: "qing_lan_name",
+    info: "qing_lan_info",
     image: handleLoadImage("oc_2_1.png"),
   },
   {
     id: "cang_yue",
-    name: "cang_yue_name",
-    info: "cang_yue_info",
+    name: "red_ye_name",
+    info: "red_ye_info",
     image: handleLoadImage("oc_3_1.png"),
   },
   {
     id: "red_ye",
-    name: "red_ye_name",
-    info: "red_ye_info",
+    name: "cang_yue_name",
+    info: "cang_yue_info",
     image: handleLoadImage("oc_4_1.png"),
   },
 ];

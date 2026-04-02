@@ -52,7 +52,7 @@ export function CharacterCard({
         <img
           src={image}
           alt={name}
-          className="w-full h-full object-cover object-[center_15%]"
+          className="w-full h-full object-cover object-[center_5%]"
           loading="lazy"
         />
       </div>

@@ -5,8 +5,8 @@ import { handleLoadImage } from "@/utils";
 const COMICS_CHARACTERS: Character[] = [
   {
     id: "comics_char_1",
-    name: "qing_lan_name",
-    info: "qing_lan_info",
+    name: "shuang_yue_name",
+    info: "shuang_yue_info",
     image: handleLoadImage("oc_1_5.png"),
     previewImage: handleLoadImage("drawing_2_2.png", "big"),
     images: [
@@ -23,8 +23,8 @@ const COMICS_CHARACTERS: Character[] = [
   },
   {
     id: "comics_char_2",
-    name: "cang_yue_name",
-    info: "cang_yue_info",
+    name: "red_ye_name",
+    info: "red_ye_info",
     image: handleLoadImage("oc_3_5.png"),
     previewImage: handleLoadImage("drawing_1_2.png", "big"),
     images: [
