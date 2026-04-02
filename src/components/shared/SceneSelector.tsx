@@ -13,7 +13,7 @@ export function SceneSelector({ scenes }: SceneSelectorProps) {
       {scenes.map((scene, index) => (
         <div
           key={index}
-          className={`border-3 w-69 h-33.25  bg-black/30 ${index === 0 ? "border-yellow" : "border-red"}`}
+          className={`border-3 w-69 h-33.25  bg-black/30 border-red`}
         >
           <img
             src={scene}

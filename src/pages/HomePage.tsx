@@ -42,7 +42,13 @@ export function HomePage() {
   const [displayTab, setDisplayTab] = useState(activeTab);
   const [translateX, setTranslateX] = useState(0);
   const handleLoginClick = () => {
-    window.location.href = "https://www.camika.ai/login";
+    const urlParams = new URLSearchParams(window.location.search);
+    const chid = urlParams.get("chid");
+    let loginUrl = "https://www.camika.ai/login";
+    if (chid) {
+      loginUrl += `?chid=${chid}`;
+    }
+    window.location.href = loginUrl;
   };
   useEffect(() => {
     if (activeTab !== displayTab) {

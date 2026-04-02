@@ -12,7 +12,7 @@ interface SceneGridProps {
  * @param selectedScene - 当前选中的场景
  * @returns 场景网格 React 组件
  */
-export function SceneGrid({ scenes, selectedScene }: SceneGridProps) {
+export function SceneGrid({ scenes }: SceneGridProps) {
   const { t } = useTranslation();
   const firstRow = scenes.slice(0, 3); // 第一行场景（最多3个）
   const secondRow = scenes.slice(3, 6); // 第二行场景（最多3个）
@@ -23,14 +23,13 @@ export function SceneGrid({ scenes, selectedScene }: SceneGridProps) {
    * @returns 场景缩略图 React 元素
    */
   const renderSceneThumb = (scene: Scene) => {
-    const isSelected = selectedScene?.id === scene.id; // 判断是否被选中
     return (
       <div
         key={scene.id}
         className="scene-thumb flex flex-col items-center gap-1.5 cursor-pointer"
       >
         <div
-          className={`w-44.25 h-27  bg-black flex items-center justify-center border-3 ${isSelected ? "border-yellow" : "border-red"}`}
+          className={`w-44.25 h-27  bg-black flex items-center justify-center border-3 border-red`}
         >
           <img
             src={scene.image}
@@ -41,9 +40,7 @@ export function SceneGrid({ scenes, selectedScene }: SceneGridProps) {
         </div>
 
         <span
-          className={`font-normal truncate text-[1.25rem] leading-[1.4em] text-center  ${
-            isSelected ? "text-yellow" : "text-white"
-          }`}
+          className={`font-normal truncate text-[1.25rem] leading-[1.4em] text-center text-white`}
           title={t(scene.name)}
         >
           {t(scene.name)}
