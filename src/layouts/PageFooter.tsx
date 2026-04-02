@@ -3,6 +3,18 @@ import { RippleButton } from "../components/common/RippleButton";
 import type { TabName } from "../data/mockData";
 import { useState } from "react";
 import PolicyDialog from "../components/common/PolicyDialog";
+import OCfooter1 from "@/assets/icons/OC_footer_1.svg";
+import OCfooter2 from "@/assets/icons/OC_footer_2.svg";
+import OCfooter3 from "@/assets/icons/OC_footer_3.svg";
+import Drawingfooter1 from "@/assets/icons/Drawing_footer_1.svg";
+import Drawingfooter2 from "@/assets/icons/Drawing_footer_2.svg";
+import Drawingfooter3 from "@/assets/icons/Drawing_footer_3.svg";
+import Comicsfooter1 from "@/assets/icons/Comics_footer_1.svg";
+import Comicsfooter2 from "@/assets/icons/Comics_footer_2.svg";
+import Comicsfooter3 from "@/assets/icons/Comics_footer_3.svg";
+import Videofooter1 from "@/assets/icons/video_footer_1.svg";
+import Videofooter2 from "@/assets/icons/video_footer_2.svg";
+import Videofooter3 from "@/assets/icons/video_footer_3.svg";
 
 interface PageFooterProps {
   activeTab: TabName;
@@ -26,19 +38,19 @@ export function PageFooter({ activeTab, onTryFreeClick }: PageFooterProps) {
         id: "OC1",
         title: `create_your_oc`,
         description: `design_face,_outfit,_personality_freely.`,
-        image: `/icons/OC_footer_1.svg`,
+        image: OCfooter1,
       },
       {
         id: "OC2",
         title: `customization`,
         description: `fine-tune_face,_hair,_body_freely.`,
-        image: `/icons/OC_footer_2.svg`,
+        image: OCfooter2,
       },
       {
         id: "OC3",
         title: `permanent_asset`,
         description: `use_across_art,_comics,_and_video.`,
-        image: `/icons/OC_footer_3.svg`,
+        image: OCfooter3,
       },
     ],
     DRAWING: [
@@ -46,19 +58,19 @@ export function PageFooter({ activeTab, onTryFreeClick }: PageFooterProps) {
         id: "DRAWING1",
         title: `pro_anime_art`,
         description: `ai_creates_pro_illustrations.`,
-        image: `/icons/Drawing_footer_1.svg`,
+        image: Drawingfooter1,
       },
       {
         id: "DRAWING2",
         title: `9_creative_modes`,
         description: `grids,_styles,_animation_&_more.`,
-        image: `/icons/Drawing_footer_2.svg`,
+        image: Drawingfooter2,
       },
       {
         id: "DRAWING3",
         title: `precise_control`,
         description: `nano_editing_&_layout_tools.`,
-        image: `/icons/Drawing_footer_3.svg`,
+        image: Drawingfooter3,
       },
     ],
     COMICS: [
@@ -66,19 +78,19 @@ export function PageFooter({ activeTab, onTryFreeClick }: PageFooterProps) {
         id: "COMICS1",
         title: `create_manga`,
         description: `ai_does_layouts_&_panels.`,
-        image: `/icons/Comics_footer_1.svg`,
+        image: Comicsfooter1,
       },
       {
         id: "COMICS2",
         title: `scene_library`,
         description: `rich_backgrounds_for_your_world.`,
-        image: `/icons/Comics_footer_2.svg`,
+        image: Comicsfooter2,
       },
       {
         id: "COMICS3",
         title: `story_comes_alive`,
         description: `oc_×_scene_×_story_united.`,
-        image: `/icons/Comics_footer_3.svg`,
+        image: Comicsfooter3,
       },
     ],
     VIDEO: [
@@ -86,25 +98,25 @@ export function PageFooter({ activeTab, onTryFreeClick }: PageFooterProps) {
         id: "VIDEO1",
         title: `oc_in_90_seconds`,
         description: `pick_scenes,_get_anime.`,
-        image: `/icons/video_footer_1.svg`,
+        image: Videofooter1,
       },
       {
         id: "VIDEO2",
         title: `auto_drama`,
         description: `ai_turns_6_scenes_into_animation.`,
-        image: `/icons/video_footer_2.svg`,
+        image: Videofooter2,
       },
       {
         id: "VIDEO3",
         title: `still_to_animation`,
         description: `turn_images_into_animation_instantly.`,
-        image: `/icons/video_footer_3.svg`,
+        image: Videofooter3,
       },
     ],
   });
 
   return (
-    <footer className="w-full px-15 py-8 flex flex-col gap-6">
+    <footer className="w-full shrink-0 h-49 px-15 py-8 flex flex-col gap-6">
       <div className="flex items-center justify-between gap-16.25">
         <div className="flex gap-10 items-center">
           {data[activeTab].map((feature) => (
@@ -157,7 +169,18 @@ export function PageFooter({ activeTab, onTryFreeClick }: PageFooterProps) {
           {t("terms_of_service")}
         </button>
         {" | "}
-        {t("contact")}
+        <button className="hover:text-white cursor-pointer transition-colors">
+          <a href="mailto:support@camika.ai"> {t("contact")}</a>
+        </button>
+        {" | "}
+        <button
+          className="hover:text-white cursor-pointer transition-colors"
+          onClick={() =>
+            (window.location.href = "https://www.camika.ai/specific-table")
+          }
+        >
+          {t("transaction_law")}
+        </button>
       </div>
 
       {policyDialog && (

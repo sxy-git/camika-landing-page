@@ -1,9 +1,11 @@
 import { IMAGE_PLACEHOLDER } from "@/utils";
+import logo from "@/assets/icons/logo.svg";
+import rightIcon from "@/assets/icons/right.svg";
 
 export const FIGMA_IMAGES = {
   bgHero: IMAGE_PLACEHOLDER + "bg.webp",
-  logo: "/icons/logo.svg",
-  rightIcon: "/icons/right.svg",
+  logo,
+  rightIcon,
 } as const;
 
 export const TABS = ["OC", "DRAWING", "COMICS", "VIDEO"] as const;

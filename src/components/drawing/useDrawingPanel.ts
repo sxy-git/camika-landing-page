@@ -1,6 +1,12 @@
 import { useState, useCallback } from "react";
 import type { Character, Scene } from "../../types/character";
 import { handleLoadImage } from "@/utils";
+import drawingEditing1 from "@/assets/icons/drawing_editing_1.svg";
+import drawingEditing2 from "@/assets/icons/drawing_editing_2.svg";
+import drawingEditing3 from "@/assets/icons/drawing_editing_3.svg";
+import drawingEditing4 from "@/assets/icons/drawing_editing_4.svg";
+import drawingEditing5 from "@/assets/icons/drawing_editing_5.svg";
+import drawingEditing6 from "@/assets/icons/drawing_editing_6.svg";
 export interface SceneData {
   id: string;
   name: string;
@@ -26,24 +32,24 @@ export const DRAWING_SCENES: SceneData[] = [
   {
     id: "nano_edit",
     name: "nano_editing",
-    image: "/icons/drawing_editing_1.svg",
+    image: drawingEditing1,
   },
   {
     id: "position_swap",
     name: "position_transform",
-    image: "/icons/drawing_editing_2.svg",
+    image: drawingEditing2,
   },
   {
     id: "style_transfer",
     name: "style_transfer",
-    image: "/icons/drawing_editing_3.svg",
+    image: drawingEditing3,
   },
-  { id: "grid_4", name: "4-panel_grid", image: "/icons/drawing_editing_4.svg" },
-  { id: "grid_9", name: "9-panel_grid", image: "/icons/drawing_editing_5.svg" },
+  { id: "grid_4", name: "4-panel_grid", image: drawingEditing4 },
+  { id: "grid_9", name: "9-panel_grid", image: drawingEditing5 },
   {
     id: "video_5s",
     name: "5s_video",
-    image: "/icons/drawing_editing_6.svg",
+    image: drawingEditing6,
   },
 ];
 export interface UseDrawingPanelReturn {

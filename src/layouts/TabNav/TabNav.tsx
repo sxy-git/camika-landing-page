@@ -22,7 +22,7 @@ export function TabNav({ activeTab, onTabChange, onLoginClick }: TabNavProps) {
   const { t } = useTranslation();
 
   return (
-    <header className="w-full h-30 bg-[#111] shadow-[0_0.375rem_0_0_rgba(68,27,28,1)] flex items-center justify-between px-10 gap-10">
+    <header className="w-full shrink-0 h-30 bg-[#111] shadow-[0_0.375rem_0_0_rgba(68,27,28,1)] flex items-center justify-between px-10 gap-10">
       <div className="w-60 h-14 shrink-0 flex items-center">
         <img
           src={FIGMA_IMAGES.logo}
