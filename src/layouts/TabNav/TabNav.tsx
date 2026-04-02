@@ -2,12 +2,7 @@ import { useTranslation } from "react-i18next";
 import { RippleButton } from "../../components/common/RippleButton";
 import { FIGMA_IMAGES } from "../../data/mockData";
 import type { TabName } from "../../data/mockData";
-import {
-  defaultLanguage,
-  languageNames,
-  languages,
-  type Language,
-} from "../../i18n/config";
+
 import { TabGroup } from "./TabGroup";
 
 interface TabNavProps {
@@ -24,17 +19,7 @@ interface TabNavProps {
  * @returns 顶部导航栏 React 组件
  */
 export function TabNav({ activeTab, onTabChange, onLoginClick }: TabNavProps) {
-  const { i18n, t } = useTranslation();
-  const currentLang = languages.includes(i18n.language as Language)
-    ? (i18n.language as Language)
-    : defaultLanguage;
-
-  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const lng = e.target.value as Language;
-    if (!languages.includes(lng)) return;
-    void i18n.changeLanguage(lng);
-    localStorage.setItem("language", lng);
-  };
+  const { t } = useTranslation();
 
   return (
     <header className="w-full h-30 bg-[#111] shadow-[0_0.375rem_0_0_rgba(68,27,28,1)] flex items-center justify-between px-10 gap-10">
