@@ -1,0 +1,367 @@
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import styles from "./PolicyDialog.module.css";
+
+export default function PrivacyPolicyPage() {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 animate-fadeIn">
+      <div className="h-full overflow-y-auto overflow-x-hidden px-12 pt-20 scrollbar-hide">
+        <button
+          onClick={() => navigate("/")}
+          className="absolute top-10 left-10 z-10 flex items-center gap-2 text-yellow hover:bg-white/10 px-4 py-2 rounded-full transition-colors cursor-pointer"
+          aria-label="Back"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          <span>{t("back")}</span>
+        </button>
+        <div className={styles["policy-dialog"]}>
+          <h1>Privacy Policy</h1>
+
+          <p>
+            This Privacy Policy is established by Camika.ai (hereinafter
+            referred to as &quot;we&quot; or &quot;us&quot;) to explain how we
+            collect, store, use, and/or share your information when you use our
+            services, including our website https://Camika.ai/ (hereinafter
+            referred to as the &quot;Website&quot;). We value your privacy and
+            are committed to protecting your personal data. This Policy applies
+            when you access or use our Services, including any websites or
+            platforms that link to this Policy.
+          </p>
+
+          <p>
+            We use Your Personal Data to provide and improve the Service. By
+            using the Website or the App, You agree to the collection and use of
+            information in accordance with this Privacy Policy.
+          </p>
+
+          <p>
+            Should you have any questions or concerns regarding this Privacy
+            Policy and our services, please check our Terms and Conditions, or
+            contact us directly via{" "}
+            <a href="https://Camika.ai/">support@Camika.ai.</a>
+          </p>
+
+          <h2>Interpretation and Definitions</h2>
+
+          <h3>Interpretation</h3>
+          <p>
+            The words of which the initial letter is capitalized have meanings
+            defined under the following conditions. The following definitions
+            shall have the same meaning regardless of whether they appear in
+            singular or plural.
+          </p>
+
+          <h3>Definitions</h3>
+          <p>For the purposes of this Privacy Policy:</p>
+
+          <ol>
+            <li>
+              <strong>Website</strong> refers to Camika.ai, accessible from
+              <a href="https://Camika.ai/">https://Camika.ai/</a>.
+            </li>
+            <li>
+              <strong>Account</strong> means a unique account created for You to
+              access our Service or parts of our Service.
+            </li>
+            <li>
+              <strong>Affiliate</strong> means an entity that controls, is
+              controlled by or is under common control with a party, where
+              &quot;control&quot; means ownership of 50% or more of the shares,
+              equity interest or other securities entitled to vote for election
+              of directors or other managing authority.
+            </li>
+            <li>
+              <strong>Company</strong> (referred to as either &quot;the
+              Company&quot;, &quot;we&quot;, &quot;us&quot; or &quot;our&quot;
+              in this Agreement) refers to Camika AI.
+            </li>
+            <li>
+              <strong>Cookies</strong> are small files that are placed on Your
+              computer, mobile device or any other device by a website,
+              containing the details of Your browsing history on that website
+              among its many uses.
+            </li>
+            <li>
+              <strong>Device</strong> means any device that can access the
+              Service such as a computer, a cellphone or a digital tablet.
+            </li>
+            <li>
+              <strong>Personal Data</strong> is any information that relates to
+              an identified or identifiable individual.
+            </li>
+            <li>
+              <strong>Service</strong> refers to the Camika AI platform and
+              Website.
+            </li>
+            <li>
+              <strong>Service Provider</strong> means any natural or legal
+              person who processes the data on behalf of the Company.
+            </li>
+            <li>
+              <strong>Usage Data</strong> refers to data collected
+              automatically, either generated by the use of the Service or from
+              the Service infrastructure itself.
+            </li>
+            <li>
+              <strong>You</strong> means the individual accessing or using the
+              Service, or the company, or other legal entity on behalf of which
+              such individual is accessing or using the Service, as applicable.
+            </li>
+          </ol>
+
+          <h2>Collecting and Using Your Personal Data</h2>
+
+          <h3>Types of Data We May Collect</h3>
+
+          <h4>Personal Data</h4>
+          <p>
+            While using Our Service, whether through the Website or the App, We
+            may ask You to provide Us with certain personally identifiable
+            information that can be used to contact or identify You. Personally
+            identifiable information may include, but is not limited to:
+          </p>
+
+          <ul>
+            <li>Email address</li>
+            <li>Usage Data</li>
+            <li>Social Media Information</li>
+            <li>Web Cookies</li>
+          </ul>
+
+          <h4>Information from Third-Party Social Media Services</h4>
+          <p>
+            The Company allows You to create an account and log in to use the
+            Service through the following Third-party Social Media Services:
+          </p>
+
+          <ul>
+            <li>Google</li>
+            <li>Facebook</li>
+            <li>Twitter</li>
+          </ul>
+
+          <p>
+            If You decide to register through or otherwise grant us access to a
+            Third-Party Social Media Service, We may collect Personal Data that
+            is already associated with Your third-party account, such as Your
+            name, Your email address, Your activities, or Your contact list.
+            This applies regardless of whether You interact with these services
+            through the Website or the App.
+          </p>
+
+          <h3>Tracking Technologies and Cookies</h3>
+          <p>
+            If you are accessing our mobile application through computers we
+            place "Cookies" on your computer to identify it. "Cookies" are
+            identifiers we transfer to your computer or mobile device that allow
+            us to recognize your browser or mobile device and tell us how and
+            when pages and features in our Services are visited and by how many
+            people. You may be able to change the preferences on your browser or
+            mobile device to prevent or limit your computer or device's
+            acceptanceor device's acceptance of cookies, but this may prevent
+            you from taking advantage of some of our features. If you click on a
+            link to a third party website, such third party may also transmit
+            cookies to you. You hereby agree that this Privacy Policy does not
+            cover the use of cookies by any third parties.
+          </p>
+
+          <h3>Use of Your Personal Data</h3>
+          <p>The Company may use Personal Data for the following purposes:</p>
+
+          <ol>
+            <li>
+              To provide and maintain our Service, including monitoring the
+              usage of our Service on both the Website and the App.
+            </li>
+            <li>
+              To manage Your Account: to manage Your registration as a user of
+              the Service. The Personal Data You provide can give You access to
+              different functionalities of the Service that are available to You
+              as a registered user.
+            </li>
+            <li>
+              To provide You with news, special offers, and general information
+              about other goods, services, and events that we offer that are
+              similar to those that you have already purchased or enquired
+              about, unless You have opted not to receive such information.
+            </li>
+            <li>
+              To manage Your requests: To attend and manage Your requests to Us.
+            </li>
+            <li>
+              For other purposes: We may use Your information for other
+              purposes, such as data analysis, identifying usage trends,
+              determining the effectiveness of our promotional campaigns, as
+              well as evaluating and improving our Service, products, services,
+              marketing, and your overall experience.
+            </li>
+          </ol>
+
+          <h2>Retention of Your Personal Data</h2>
+          <p>
+            The Company will retain Your Personal Data only for as long as is
+            necessary for the purposes set out in this Privacy Policy. We will
+            retain and use Your Personal Data to the extent necessary to comply
+            with our legal obligations (for example, if we are required to
+            retain your data to comply with applicable laws), resolve disputes,
+            and enforce our legal agreements and policies.
+          </p>
+
+          <h2>Delete Your Personal Data</h2>
+          <p>
+            You have the right to delete or request that We assist in deleting
+            the Personal Data that We have collected about You.
+          </p>
+          <p>
+            Our Service may give You the ability to delete certain information
+            about You from within the Service.
+          </p>
+
+          <h2>Security of Your Personal Data</h2>
+          <p>
+            The security of Your Personal Data is important to Us, but remember
+            that no method of transmission over the Internet, or method of
+            electronic storage is 100% secure. While We strive to use
+            commercially acceptable means to protect Your Personal Data, We
+            cannot guarantee its absolute security.
+          </p>
+          <p>
+            You are responsible for ensuring the security of Your Device and the
+            credentials You use to access the App.
+          </p>
+
+          <h2>Content Restrictions</h2>
+          <p>
+            To maintain a safe, ethical, and responsible platform, we have
+            established the following content restrictions for all users of our
+            AI-generated content website. These restrictions apply to any
+            content generated, uploaded, or shared on our platform.
+          </p>
+
+          <h3>Prohibited Content</h3>
+          <p>We prohibit the following types of content:</p>
+
+          <ul>
+            <li>
+              <strong>Illegal Content:</strong> Any content that promotes,
+              facilitates, or engages in illegal activities, including but not
+              limited to fraud, violence, or the sale of illegal goods or
+              services.
+            </li>
+            <li>
+              <strong>Harmful Content:</strong> Content that incites hatred,
+              violence, or discrimination based on race, religion, gender,
+              sexual orientation, or other protected characteristics.
+            </li>
+            <li>
+              <strong>Explicit or Adult Content:</strong> Pornographic,
+              excessively violent, or otherwise inappropriate content, including
+              depictions of sexual abuse, child exploitation, or animal cruelty.
+            </li>
+            <li>
+              <strong>Intellectual Property Infringement:</strong> Content that
+              infringes upon the copyrights, trademarks, or other intellectual
+              property rights of others.
+            </li>
+            <li>
+              <strong>False or Misleading Content:</strong> Content that is
+              intentionally false, misleading, or deceptive, particularly when
+              presented as factual.
+            </li>
+            <li>
+              <strong>Privacy Violations:</strong> Content that discloses
+              personal information without consent or invades someone&apos;s
+              privacy.
+            </li>
+            <li>
+              <strong>Hate Speech:</strong> Content that promotes hatred,
+              discrimination, or hostility towards individuals or groups based
+              on protected characteristics.
+            </li>
+            <li>
+              <strong>Harassment and Bullying:</strong> Content that targets
+              individuals or groups with the intent to harass, threaten, or
+              bully.
+            </li>
+            <li>
+              <strong>Self-Harm and Suicide:</strong> Content that promotes or
+              glorifies self-harm, suicide, or other dangerous behaviors.
+            </li>
+            <li>
+              <strong>Spam and Malware:</strong> Spam, content containing
+              malware, or content intended to phish, scam, or harm users.
+            </li>
+            <li>
+              <strong>Impersonation:</strong> Content that impersonates
+              individuals, organizations, or entities in a misleading or
+              deceptive manner.
+            </li>
+            <li>
+              <strong>Prohibited Uses:</strong> Using our services for any
+              illegal or prohibited purposes, including but not limited to
+              illegal gambling, spreading viruses, or interfering with our
+              services.
+            </li>
+          </ul>
+
+          <h3>Additional Restrictions for AI-Generated Content</h3>
+          <ul>
+            <li>
+              <strong>No Misrepresentation:</strong> You must not represent
+              AI-generated content as being created by you without proper
+              disclosure.
+            </li>
+            <li>
+              <strong>No Sensitive Data Input:</strong> You must not input
+              sensitive personal data (such as racial or ethnic origin,
+              political opinions, religious beliefs, health data, or sexual
+              orientation) into our AI tools.
+            </li>
+            <li>
+              <strong>No Harmful Outputs:</strong> You must not use our AI tools
+              to generate content that is harmful, offensive, or violates the
+              above prohibitions.
+            </li>
+          </ul>
+
+          <h2>Enforcement</h2>
+          <p>
+            We reserve the right to remove any content that violates these
+            restrictions and to take appropriate action, including suspending or
+            terminating accounts. We may also report illegal activities to the
+            appropriate authorities.
+          </p>
+
+          <h2>Changes to this Privacy Policy</h2>
+          <p>
+            We may update Our Privacy Policy from time to time. You are advised
+            to review this Privacy Policy periodically for any changes. Changes
+            to this Privacy Policy are effective when they are posted on this
+            page. We may also communicate major updates directly through notices
+            on the Website or notifications in the App.
+          </p>
+
+          <h2>Contact Us</h2>
+          <p>
+            If you have any questions or concerns about this Privacy Policy, you
+            can contact us by email at:{" "}
+            <a href="https://Camika.ai/">support@Camika.ai</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}

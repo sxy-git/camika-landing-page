@@ -1,0 +1,68 @@
+.policy-dialog {
+  width: 95rem;
+  margin: 0 auto;
+  color: white;
+  line-height: 1.6;
+}
+
+.policy-dialog h1 {
+  font-size: 4rem;
+  line-height: 4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding: 0rem 0 3.75rem 1.25rem;
+}
+
+.policy-dialog h2 {
+  margin: 4.5rem 0 1.75rem; /* 32px 0 12px */
+  font-size: 2.85rem; /* 20px → 放大 */
+  line-height: 3.75rem; /* 32px 0 12px */
+}
+
+.policy-dialog h3 {
+  margin: 2.85rem 0 1.15rem; /* 20px 0 8px */
+  font-size: 2.3rem; /* 16px → 放大 */
+  line-height: 3.2rem; /* 20px 0 8px */
+}
+
+.policy-dialog h4 {
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.policy-dialog p {
+  margin-bottom: 1rem;
+  font-size: 2rem; /* 正文基准 */
+  line-height: 2.75rem; /* 正文基准 */
+  opacity: 0.9;
+}
+
+.policy-dialog a {
+  color: yellow;
+  text-decoration: underline;
+}
+
+.policy-dialog a:hover {
+  opacity: 0.8;
+}
+
+.policy-dialog ul,
+.policy-dialog ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+}
+
+.policy-dialog li {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.policy-dialog strong {
+  font-weight: 600;
+}

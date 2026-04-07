@@ -1,8 +1,8 @@
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { RippleButton } from "../components/common/RippleButton";
 import type { TabName } from "../data/mockData";
 import { useState } from "react";
-import PolicyDialog from "../components/common/PolicyDialog";
 import OCfooter1 from "@/assets/icons/OC_footer_1.svg";
 import OCfooter2 from "@/assets/icons/OC_footer_2.svg";
 import OCfooter3 from "@/assets/icons/OC_footer_3.svg";
@@ -21,8 +21,6 @@ interface PageFooterProps {
   onTryFreeClick?: () => void;
 }
 
-type PolicyType = "Privacy Policy" | "Terms and Conditions";
-
 /**
  * @description 页面底部组件，根据当前 tab 动态展示功能特点和版权信息
  * @param activeTab - 当前激活的 Tab，用于切换底部功能描述
@@ -31,7 +29,6 @@ type PolicyType = "Privacy Policy" | "Terms and Conditions";
  */
 export function PageFooter({ activeTab, onTryFreeClick }: PageFooterProps) {
   const { t } = useTranslation();
-  const [policyDialog, setPolicyDialog] = useState<PolicyType | null>(null);
   const [data] = useState({
     OC: [
       {
@@ -155,19 +152,19 @@ export function PageFooter({ activeTab, onTryFreeClick }: PageFooterProps) {
 
       <div className="text-white/80 font-normal text-[1.25rem] leading-[1.2em]">
         © 2026 Camika ·
-        <button
-          onClick={() => setPolicyDialog("Privacy Policy")}
+        <Link
+          to="/privacy"
           className="hover:text-white cursor-pointer transition-colors"
         >
           {t("privacy_policy")}
-        </button>
+        </Link>
         {" | "}
-        <button
-          onClick={() => setPolicyDialog("Terms and Conditions")}
+        <Link
+          to="/terms"
           className="hover:text-white cursor-pointer transition-colors"
         >
           {t("terms_of_service")}
-        </button>
+        </Link>
         {" | "}
         <button className="hover:text-white cursor-pointer transition-colors">
           <a href="mailto:support@camika.ai"> {t("contact")}</a>
@@ -182,13 +179,6 @@ export function PageFooter({ activeTab, onTryFreeClick }: PageFooterProps) {
           {t("transaction_law")}
         </button>
       </div>
-
-      {policyDialog && (
-        <PolicyDialog
-          type={policyDialog}
-          onClose={() => setPolicyDialog(null)}
-        />
-      )}
     </footer>
   );
 }
